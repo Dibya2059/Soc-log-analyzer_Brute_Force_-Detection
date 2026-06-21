@@ -21,7 +21,7 @@ It analyzes SSH authentication logs and detects potential brute force attacks ba
 3. Filters failed login attempts
 4. Extracts IP addresses
 5. Counts repeated failures per IP
-6. Triggers alert if threshold (≥3) is reached
+6. Triggers alert if threshold (≥5) is reached
 
 ---
 
@@ -34,8 +34,24 @@ It analyzes SSH authentication logs and detects potential brute force attacks ba
 ---
 
 ## 🚨 Detection Logic
-If an IP address shows **3 or more failed login attempts**, it is flagged as a possible brute force attack.
+If an IP address shows **5 or more failed login attempts**, it is flagged as a possible brute force attack.
 
 ---
 
 ## 📂 Project Structure
+SOC-Log-Analyzer/
+├── core/
+│ ├── analyzer.py # Log parsing and analysis logic
+│ ├── detector.py # Brute-force detection engine
+│ ├── report.py # Report generation module
+│ └── pycache/ # Python cache files (ignored in production)
+│
+├── logs/
+│ └── auth.log # Sample authentication log file
+│
+├── reports/
+│ └── alert_report.txt # Generated security report
+│
+├── main.py # Entry point of the application
+└── README.md
+
